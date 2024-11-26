@@ -1,5 +1,6 @@
 import { Category } from "@prisma/client";
 import Image from "next/image";
+import Link from "next/link";
 
 type CategoryIconProps = {
   category: Category;
@@ -7,8 +8,9 @@ type CategoryIconProps = {
 
 const CategoryIcon: React.FC<CategoryIconProps> = ({ category }) => {
   return (
-    <div
+    <Link
       className={`flex items-center gap-4 w-full border-t border-gray-200 p-3 last-of-type:border-b`}
+      href={`/order/${category.slug}`}
     >
       <div className="relative h-16 w-16">
         <Image
@@ -18,7 +20,7 @@ const CategoryIcon: React.FC<CategoryIconProps> = ({ category }) => {
         />
       </div>
       <p className="text-xl font-bold">{category.name}</p>
-    </div>
+    </Link>
   );
 };
 
