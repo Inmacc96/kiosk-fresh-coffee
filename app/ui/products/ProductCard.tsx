@@ -1,6 +1,7 @@
 import { Product } from "@prisma/client";
 import Image from "next/image";
 import { formatCurrency } from "../../../src/utils/index";
+import AddProductButton from "./AddProductButton";
 
 type ProductCardProps = {
   product: Product;
@@ -21,12 +22,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         <p className="mt-5 font-black text-amber-500 text-4xl">
           {formatCurrency(product.price)}
         </p>
-        <button
-          type="button"
-          className="bg-indigo-600 hover:bg-indigo-800 text-white w-full mt-5 p-3 uppercase font-bold cursor-pointer rounded-lg"
-        >
-          Añadir
-        </button>
+        <AddProductButton product={product} />
       </div>
     </div>
   );
