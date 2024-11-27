@@ -5,6 +5,7 @@ import { OrderItem } from "../types";
 interface Store {
   order: OrderItem[];
   addToOrder: (product: Product) => void;
+  increaseQuantity: (id: Product["id"]) => void;
 }
 
 export const useStore = create<Store>((set, get) => ({
@@ -29,5 +30,18 @@ export const useStore = create<Store>((set, get) => ({
       ];
     }
     set(() => ({ order }));
+  },
+  increaseQuantity: (id) => {
+    set((state) => ({
+      order: state.order.map((item) =>
+        item.id === id
+          ? {
+              ...item,
+              quantity: item.quantity + 1,
+              subtotal: item.price * (item.quantity + 1),
+            }
+          : item
+      ),
+    }));
   },
 }));
