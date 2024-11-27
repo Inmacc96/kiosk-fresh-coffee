@@ -12,6 +12,7 @@ type OrderProductItemProps = {
 const OrderProductItem: React.FC<OrderProductItemProps> = ({ item }) => {
   const increaseQuantity = useStore((state) => state.increaseQuantity);
   const decreaseQuantity = useStore((state) => state.decreaseQuantity);
+  const removeItem = useStore((state) => state.removeItem);
   const disableDecreaseButton = useMemo(
     () => item.quantity === MIN_ITEMS,
     [item]
@@ -27,7 +28,7 @@ const OrderProductItem: React.FC<OrderProductItemProps> = ({ item }) => {
         <div className="flex justify-between items-start">
           <p className="text-xl font-bold">{item.name} </p>
 
-          <button type="button" onClick={() => {}}>
+          <button type="button" onClick={() => removeItem(item.id)}>
             <XCircleIcon className="text-red-600 h-8 w-8" />
           </button>
         </div>
@@ -37,9 +38,7 @@ const OrderProductItem: React.FC<OrderProductItemProps> = ({ item }) => {
         <div className="flex gap-5 px-10 py-2 bg-gray-100 w-fit rounded-lg">
           <button
             type="button"
-            onClick={() => {
-              decreaseQuantity(item.id);
-            }}
+            onClick={() => decreaseQuantity(item.id)}
             disabled={disableDecreaseButton}
             className="disabled:opacity-20"
           >
@@ -50,9 +49,7 @@ const OrderProductItem: React.FC<OrderProductItemProps> = ({ item }) => {
 
           <button
             type="button"
-            onClick={() => {
-              increaseQuantity(item.id);
-            }}
+            onClick={() => increaseQuantity(item.id)}
             disabled={disableIncreaseButton}
             className="disabled:opacity-20"
           >
