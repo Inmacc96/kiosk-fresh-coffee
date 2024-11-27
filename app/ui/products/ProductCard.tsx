@@ -1,6 +1,6 @@
 import { Product } from "@prisma/client";
 import Image from "next/image";
-import { formatCurrency } from "../../../utils/index";
+import { formatCurrency } from "../../../src/utils/index";
 
 type ProductCardProps = {
   product: Product;
