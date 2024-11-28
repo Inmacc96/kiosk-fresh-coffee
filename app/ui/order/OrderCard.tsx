@@ -1,3 +1,4 @@
+import { completeOrder } from "@/app/lib/actions";
 import { OrderWithProducts } from "@/app/lib/types";
 import { formatCurrency } from "@/app/lib/utils";
 
@@ -6,6 +7,8 @@ type OrderCardProps = {
 };
 
 const OrderCard: React.FC<OrderCardProps> = ({ order }) => {
+  const completeOrderWithId = completeOrder.bind(null, order.id);
+
   return (
     <section
       aria-labelledby="summary-heading"
@@ -39,11 +42,11 @@ const OrderCard: React.FC<OrderCardProps> = ({ order }) => {
         </div>
       </dl>
 
-      <form>
+      <form action={completeOrderWithId}>
         <input
           type="submit"
           className="bg-indigo-600 hover:bg-indigo-800 text-white w-full mt-5 p-3 uppercase font-bold cursor-pointer rounded-lg"
-          value="Marcar Orden Completada"
+          value="Marcar Pedido Completado"
         />
       </form>
     </section>

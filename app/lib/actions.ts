@@ -29,3 +29,19 @@ export const createOrder = async (data: unknown) => {
     console.log(error);
   }
 };
+
+export const completeOrder = async (id: number) => {
+  try {
+    await prisma.order.update({
+      where: {
+        id,
+      },
+      data: {
+        status: true,
+        orderReadyAt: new Date(Date.now()),
+      },
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
