@@ -1,5 +1,6 @@
 "use client";
 import { createOrder } from "@/app/lib/actions";
+import { OrderSchema } from "@/app/lib/schema";
 import { useStore } from "@/app/lib/store";
 import { formatCurrency } from "@/app/lib/utils";
 import { useMemo } from "react";
@@ -13,7 +14,12 @@ const OrderSummary = () => {
   );
 
   const handleCreateOrder = (formData: FormData) => {
-    const name = formData.get("name");
+    const data = { name: formData.get("name") };
+
+    const result = OrderSchema.safeParse(data);
+    console.log(result);
+
+    return;
     createOrder();
   };
 
