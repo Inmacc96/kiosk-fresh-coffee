@@ -1,5 +1,11 @@
+import Heading from "@/app/ui/Heading";
+
 const OrdersPage = () => {
-  return <div>orders</div>;
+  return (
+    <>
+      <Heading>Administrar Órdenes</Heading>
+    </>
+  );
 };
 
 export default OrdersPage;
