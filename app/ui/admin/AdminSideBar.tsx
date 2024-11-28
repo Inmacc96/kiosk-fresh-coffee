@@ -1,7 +1,7 @@
 import AdminRoute from "./AdminRoute";
 
 const adminNavigation = [
-  { url: "/admin/orders", text: "Ordenes", blank: false },
+  { url: "/admin/orders", text: "Pedidos", blank: false },
   { url: "/admin/products", text: "Productos", blank: false },
   { url: "/order/cafe", text: "Ver Quiosco", blank: true },
 ];
