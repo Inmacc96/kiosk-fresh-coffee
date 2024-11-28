@@ -15,7 +15,7 @@ const OrderSummary = () => {
   );
 
   const handleCreateOrder = async (formData: FormData) => {
-    const data = { name: formData.get("name") };
+    const data = { name: formData.get("name"), total, order };
     const result = OrderSchema.safeParse(data);
     if (!result.success) {
       result.error.issues.forEach((issue) =>
