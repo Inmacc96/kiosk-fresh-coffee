@@ -9,6 +9,7 @@ import ProductDetails from "./OrderProductItem";
 
 const OrderSummary = () => {
   const order = useStore((state) => state.order);
+  const clearOrder = useStore((state) => state.clearOrder);
   const total = useMemo(
     () => order.reduce((total, item) => total + item.subtotal, 0),
     [order]
@@ -29,6 +30,8 @@ const OrderSummary = () => {
         toast.error(issue.message, { autoClose: 5000 })
       );
     }
+    toast.success("Pedido realizado correctamente", { autoClose: 5000 });
+    clearOrder();
   };
 
   return (
