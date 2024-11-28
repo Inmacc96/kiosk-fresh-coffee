@@ -4,6 +4,7 @@ import { OrderSchema } from "@/app/lib/schema";
 import { useStore } from "@/app/lib/store";
 import { formatCurrency } from "@/app/lib/utils";
 import { useMemo } from "react";
+import { toast } from "react-toastify";
 import ProductDetails from "./OrderProductItem";
 
 const OrderSummary = () => {
@@ -17,7 +18,11 @@ const OrderSummary = () => {
     const data = { name: formData.get("name") };
 
     const result = OrderSchema.safeParse(data);
-    console.log(result);
+    if (!result.success) {
+      result.error.issues.forEach((issue) =>
+        toast.error(issue.message, { autoClose: 5000 })
+      );
+    }
 
     return;
     createOrder();

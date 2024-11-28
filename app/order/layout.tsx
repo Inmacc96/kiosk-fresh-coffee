@@ -1,5 +1,6 @@
 import OrderSidebar from "../ui/order/OrderSidebar";
 import OrderSummary from "../ui/order/OrderSummary";
+import ToastNotification from "../ui/ToastNotification";
 
 const RootLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
@@ -13,6 +14,7 @@ const RootLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
         <OrderSummary />
       </div>
+      <ToastNotification />
     </>
   );
 };
