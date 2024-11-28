@@ -1,8 +1,8 @@
 "use client";
-import { useStore } from "@/src/store";
-import { formatCurrency } from "@/src/utils";
 import { useMemo } from "react";
 import ProductDetails from "./OrderProductItem";
+import { useStore } from "@/app/lib/store";
+import { formatCurrency } from "@/app/lib/utils";
 
 const OrderSummary = () => {
   const order = useStore((state) => state.order);

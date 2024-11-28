@@ -1,7 +1,7 @@
-import { MAX_ITEMS, MIN_ITEMS } from "@/src/constants";
-import { useStore } from "@/src/store";
-import { OrderItem } from "@/src/types";
-import { formatCurrency } from "@/src/utils";
+import { MAX_ITEMS, MIN_ITEMS } from "@/app/lib/constants";
+import { useStore } from "@/app/lib/store";
+import { OrderItem } from "@/app/lib/types";
+import { formatCurrency } from "@/app/lib/utils";
 import { MinusIcon, PlusIcon, XCircleIcon } from "@heroicons/react/24/outline";
 import { useMemo } from "react";
 
