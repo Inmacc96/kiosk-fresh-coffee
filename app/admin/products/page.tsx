@@ -1,5 +1,6 @@
 import { prisma } from "@/app/lib/prisma";
 import Heading from "@/app/ui/Heading";
+import ProductSearchForm from "@/app/ui/products/ProductSearchForm";
 import ProductsPagination from "@/app/ui/products/ProductsPagination";
 import ProductTable from "@/app/ui/products/ProductTable";
 import { redirect } from "next/navigation";
@@ -45,6 +46,10 @@ const ProductPage: React.FC<ProductPageProps> = async ({ searchParams }) => {
   return (
     <>
       <Heading>Administrar Productos</Heading>
+
+      <div className="flex flex-col lg:flex-row lg:justify-between gap-5">
+        <ProductSearchForm />
+      </div>
 
       <ProductTable products={products} />
 
