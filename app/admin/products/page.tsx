@@ -1,6 +1,8 @@
 import { prisma } from "@/app/lib/prisma";
 import Heading from "@/app/ui/Heading";
+import ProductsPagination from "@/app/ui/products/ProductsPagination";
 import ProductTable from "@/app/ui/products/ProductTable";
+import { redirect } from "next/navigation";
 
 const productCount = async () => {
   return await prisma.product.count();
@@ -45,6 +47,8 @@ const ProductPage: React.FC<ProductPageProps> = async ({ searchParams }) => {
       <Heading>Administrar Productos</Heading>
 
       <ProductTable products={products} />
+
+      <ProductsPagination currentPage={page} totalPages={totalPages} />
     </>
   );
 };
