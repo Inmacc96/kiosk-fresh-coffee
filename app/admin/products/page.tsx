@@ -24,16 +24,17 @@ const getProducts = async (page: number, pageSize: number) => {
 export type ProductsWithCategory = Awaited<ReturnType<typeof getProducts>>;
 
 type ProductPageProps = {
-  searchParams: { page: string };
+  searchParams?: Promise<{ page: string }>;
 };
 
-const ProductPage: React.FC<ProductPageProps> = async ({ searchParams }) => {
-  const page = +searchParams.page || 1;
+const ProductPage: React.FC<ProductPageProps> = async (props) => {
+  const searchParams = await props.searchParams;
+  const currentPage = Number(searchParams?.page) || 1;
   const pageSize = 10;
 
-  if (page < 0) redirect("/admin/products");
+  if (currentPage < 0) redirect("/admin/products");
 
-  const productsData = getProducts(page, pageSize);
+  const productsData = getProducts(currentPage, pageSize);
   const totalProductsData = productCount();
   const [products, totalProducts] = await Promise.all([
     productsData,
@@ -41,7 +42,7 @@ const ProductPage: React.FC<ProductPageProps> = async ({ searchParams }) => {
   ]);
   const totalPages = Math.ceil(totalProducts / pageSize);
 
-  if (page > totalPages) redirect("/admin/products");
+  if (currentPage > totalPages) redirect("/admin/products");
 
   return (
     <>
@@ -53,7 +54,7 @@ const ProductPage: React.FC<ProductPageProps> = async ({ searchParams }) => {
 
       <ProductTable products={products} />
 
-      <ProductsPagination currentPage={page} totalPages={totalPages} />
+      <ProductsPagination currentPage={currentPage} totalPages={totalPages} />
     </>
   );
 };
