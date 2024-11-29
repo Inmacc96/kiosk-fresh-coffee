@@ -27,12 +27,18 @@ type ProductPageProps = {
 const ProductPage: React.FC<ProductPageProps> = async ({ searchParams }) => {
   const page = +searchParams.page || 1;
   const pageSize = 10;
+
+  if (page < 0) redirect("/admin/products");
+
   const productsData = getProducts(page, pageSize);
   const totalProductsData = productCount();
   const [products, totalProducts] = await Promise.all([
     productsData,
     totalProductsData,
   ]);
+  const totalPages = Math.ceil(totalProducts / pageSize);
+
+  if (page > totalPages) redirect("/admin/products");
 
   return (
     <>
