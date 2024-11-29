@@ -1,9 +1,9 @@
-import { Category, Product } from "@prisma/client";
+import { ProductsWithCategory } from "@/app/admin/products/page";
 import Link from "next/link";
 import { formatCurrency } from "../../lib/utils";
 
 type ProductTableProps = {
-  products: (Product & { category: Category })[];
+  products: ProductsWithCategory;
 };
 
 const ProductTable: React.FC<ProductTableProps> = ({ products }) => {

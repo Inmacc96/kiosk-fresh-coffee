@@ -10,6 +10,8 @@ const getProducts = async () => {
   });
 };
 
+export type ProductsWithCategory = Awaited<ReturnType<typeof getProducts>>;
+
 const ProductPage = async () => {
   const products = await getProducts();
 
