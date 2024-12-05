@@ -1,10 +1,15 @@
-import ProductForm from "./ProductForm";
+"use client";
 
-const AddProductForm = () => {
+type AddProductFormProps = { children: React.ReactNode };
+
+const AddProductForm: React.FC<AddProductFormProps> = ({ children }) => {
+  const handleSubmit = async (formData: FormData) => {
+    console.log("desde handle submit");
+  };
   return (
     <div className="bg-white mt-10 px-5 py-10 rounded-md shadow-md max-w-3xl mx-auto">
-      <form className="space-y-5">
-        <ProductForm />
+      <form className="space-y-5" action={handleSubmit}>
+        {children}
         <input
           type="submit"
           className="bg-indigo-600 hover:bg-indigo-800 text-white w-full rounded-lg mt-5 p-3 uppercase font-bold cursor-pointer"
