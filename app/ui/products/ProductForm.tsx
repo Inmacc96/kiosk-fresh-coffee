@@ -1,4 +1,5 @@
 import { prisma } from "@/app/lib/prisma";
+import ImageUpload from "./ImageUpload";
 
 async function getCategories() {
   return await prisma.category.findMany();
@@ -50,6 +51,8 @@ const ProductForm = async () => {
           ))}
         </select>
       </div>
+
+      <ImageUpload />
     </>
   );
 };
