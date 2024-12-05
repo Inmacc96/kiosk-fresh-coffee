@@ -2,7 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { prisma } from "./prisma";
-import { OrderSchema } from "./schema";
+import { OrderSchema, ProductSchema } from "./schema";
 
 export const createOrder = async (data: unknown) => {
   const result = OrderSchema.safeParse(data);
@@ -43,6 +43,23 @@ export const completeOrder = async (id: number) => {
       },
     });
     revalidatePath("/admin/orders");
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const createProduct = async (data: unknown) => {
+  const result = ProductSchema.safeParse(data);
+  if (!result.success) {
+    return {
+      errors: result.error.issues,
+    };
+  }
+
+  try {
+    await prisma.product.create({
+      data: result.data,
+    });
   } catch (error) {
     console.log(error);
   }

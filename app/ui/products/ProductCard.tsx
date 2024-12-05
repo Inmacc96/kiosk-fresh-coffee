@@ -1,4 +1,4 @@
-import { formatCurrency } from "@/app/lib/utils";
+import { formatCurrency, getImagePath } from "@/app/lib/utils";
 import { Product } from "@prisma/client";
 import Image from "next/image";
 import AddProductButton from "./AddProductButton";
@@ -8,12 +8,13 @@ type ProductCardProps = {
 };
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+  const imagePath = getImagePath(product.image);
   return (
     <div className="border bg-white rounded-lg">
       <Image
         width={500}
         height={500}
-        src={`/products/${product.image}.jpg`}
+        src={imagePath}
         alt={`producto ${product.name}`}
         className="rounded-t-lg"
       />

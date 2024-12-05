@@ -4,3 +4,11 @@ export const formatCurrency = (amount: number) => {
     currency: "EUR",
   }).format(amount / 10);
 };
+
+export const getImagePath = (imagePath: string) => {
+  const cloudinaryBaseUrl = "https://res.cloudinary.com";
+  if (imagePath.startsWith(cloudinaryBaseUrl)) {
+    return imagePath;
+  }
+  return `/products/${imagePath}.jpg`;
+};
