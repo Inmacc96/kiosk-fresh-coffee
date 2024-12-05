@@ -3,6 +3,7 @@ import Heading from "@/app/ui/Heading";
 import ProductSearchForm from "@/app/ui/products/ProductSearchForm";
 import ProductsPagination from "@/app/ui/products/ProductsPagination";
 import ProductTable from "@/app/ui/products/ProductTable";
+import Link from "next/link";
 import { redirect } from "next/navigation";
 
 const productCount = async () => {
@@ -49,6 +50,12 @@ const ProductPage: React.FC<ProductPageProps> = async (props) => {
       <Heading>Administrar Productos</Heading>
 
       <div className="flex flex-col lg:flex-row lg:justify-between gap-5">
+        <Link
+          href="/admin/products/new"
+          className="bg-amber-400 w-full lg:w-auto text-xl px-10 py-3 text-center font-bold cursor-pointer"
+        >
+          Crear Producto
+        </Link>
         <ProductSearchForm />
       </div>
 
