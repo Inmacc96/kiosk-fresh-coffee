@@ -64,3 +64,23 @@ export const createProduct = async (data: unknown) => {
     console.log(error);
   }
 };
+
+export const updateProduct = async (id: number, data: unknown) => {
+  const result = ProductSchema.safeParse(data);
+  if (!result.success) {
+    return {
+      errors: result.error.issues,
+    };
+  }
+
+  try {
+    await prisma.product.update({
+      where: {
+        id,
+      },
+      data: result.data,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
