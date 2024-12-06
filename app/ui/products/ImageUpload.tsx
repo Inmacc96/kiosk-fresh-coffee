@@ -3,6 +3,7 @@ import { CldUploadWidget, CloudinaryUploadWidgetInfo } from "next-cloudinary";
 import Image from "next/image";
 import { useState } from "react";
 import { TbPhotoPlus } from "react-icons/tb";
+import { getImagePath } from "../../lib/utils";
 
 type ImageUploadProps = {
   image?: string;
@@ -37,7 +38,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ image }) => {
                   <Image
                     fill
                     style={{ objectFit: "contain" }}
-                    src={imageUrl}
+                    src={getImagePath(imageUrl)}
                     alt="Imagen del producto"
                   />
                 </div>
