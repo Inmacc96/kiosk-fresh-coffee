@@ -9,6 +9,9 @@ const getProducts = async (category: string) => {
         slug: category,
       },
     },
+    orderBy: {
+      id: "asc",
+    },
   });
 };
 
