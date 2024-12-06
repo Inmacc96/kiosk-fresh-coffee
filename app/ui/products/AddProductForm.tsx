@@ -40,7 +40,7 @@ const AddProductForm: React.FC<AddProductFormProps> = ({ children }) => {
         <input
           type="submit"
           className="bg-indigo-600 hover:bg-indigo-800 text-white w-full rounded-lg mt-5 p-3 uppercase font-bold cursor-pointer"
-          value="Registrar producto"
+          value="Guardar cambios"
         />
       </form>
     </div>

@@ -1,4 +1,7 @@
 import { prisma } from "@/app/lib/prisma";
+import Heading from "@/app/ui/Heading";
+import EditProductForm from "@/app/ui/products/EditProductForm";
+import ProductForm from "@/app/ui/products/ProductForm";
 import { notFound } from "next/navigation";
 
 const getProductById = async (id: number) => {
@@ -19,7 +22,15 @@ const EditProductPage: React.FC<EditProductPageProps> = async ({ params }) => {
 
   if (!product) notFound();
 
-  return <div></div>;
+  return (
+    <>
+      <Heading>Editar Producto: {product.name}</Heading>
+
+      <EditProductForm>
+        <ProductForm product={product} />
+      </EditProductForm>
+    </>
+  );
 };
 
 export default EditProductPage;
