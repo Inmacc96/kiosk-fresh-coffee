@@ -1,4 +1,5 @@
 import { prisma } from "@/app/lib/prisma";
+import GoBackButton from "@/app/ui/GoBackButton";
 import Heading from "@/app/ui/Heading";
 import EditProductForm from "@/app/ui/products/EditProductForm";
 import ProductForm from "@/app/ui/products/ProductForm";
@@ -25,7 +26,7 @@ const EditProductPage: React.FC<EditProductPageProps> = async ({ params }) => {
   return (
     <>
       <Heading>Editar Producto: {product.name}</Heading>
-
+      <GoBackButton />
       <EditProductForm>
         <ProductForm product={product} />
       </EditProductForm>
