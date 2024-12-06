@@ -4,8 +4,12 @@ import Image from "next/image";
 import { useState } from "react";
 import { TbPhotoPlus } from "react-icons/tb";
 
-const ImageUpload = () => {
-  const [imageUrl, setImageUrl] = useState("");
+type ImageUploadProps = {
+  image?: string;
+};
+
+const ImageUpload: React.FC<ImageUploadProps> = ({ image }) => {
+  const [imageUrl, setImageUrl] = useState(image ?? "");
 
   return (
     <CldUploadWidget
@@ -41,7 +45,7 @@ const ImageUpload = () => {
             </div>
           </div>
 
-          <input type="hidden" name="image" value={imageUrl} />
+          <input type="hidden" name="image" defaultValue={imageUrl} />
         </>
       )}
     </CldUploadWidget>

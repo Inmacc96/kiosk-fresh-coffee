@@ -1,4 +1,5 @@
 import { prisma } from "@/app/lib/prisma";
+import { getImagePath } from "@/app/lib/utils";
 import { Product } from "@prisma/client";
 import ImageUpload from "./ImageUpload";
 
@@ -60,7 +61,9 @@ const ProductForm: React.FC<ProductFormProps> = async ({ product }) => {
         </select>
       </div>
 
-      <ImageUpload />
+      <ImageUpload
+        image={product?.image ? getImagePath(product.image) : undefined}
+      />
     </>
   );
 };
